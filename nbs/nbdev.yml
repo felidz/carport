@@ -1,0 +1,9 @@
+project:
+  output-dir: _docs
+
+website:
+  title: "carport"
+  site-url: "https://felidz.github.io/carport"
+  description: "Dependency Graph from Python imports"
+  repo-branch: main
+  repo-url: "https://github.com/felidz/carport"

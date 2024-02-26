@@ -1,0 +1,37 @@
+project:
+  type: website
+
+format:
+  html:
+    toc: true
+    code-tools: 
+      source: true
+      # caption: none
+    code-fold: show
+    code-summary: "Code"
+    code-line-numbers: true
+    css: styles.css
+    theme: 
+      light: [flatly, styles-light.scss]
+      dark: [darkly, styles-dark.scss]
+    highlight-style: github
+
+website:
+  twitter-card: true
+  open-graph: true
+  # repo-actions: [issue]
+  navbar:
+    background: primary
+    search: true
+    left:
+      - icon: github
+        href: https://github.com/felidz/carport
+        aria-label: GitHub
+  page-navigation: true
+  sidebar:
+    style: floating
+    contents:
+      - index.ipynb
+      - section: API
+        contents: api/*.ipynb
+metadata-files: [nbdev.yml, sidebar.yml]
