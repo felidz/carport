@@ -1,0 +1,94 @@
+[
+  {
+    "objectID": "api/02-vis.html",
+    "href": "api/02-vis.html",
+    "title": "vis",
+    "section": "",
+    "text": "Visualization module for carport.\n\nsource\n\nD2API\n\n D2API ()\n\nInitialize self. See help(type(self)) for accurate signature.\n\nsource\n\n\nD2API.create_svg\n\n D2API.create_svg (d2:str, app:str='d2')\n\nDraw svg via kroki online api or d2 engine.\nSee d2 installation doc.\n\n\n\n\nType\nDefault\nDetails\n\n\n\n\nd2\nstr\n\n\n\n\napp\nstr\nd2\nrequiring installing d2 first\n\n\nReturns\nSVG\n\n\n\n\n\n\nsource\n\n\ndot2graph\n\n dot2graph (dot, **kw)\n\n\nsource\n\n\nd22graph\n\n d22graph (d2_string, app='kroki')",
+    "crumbs": [
+      "API",
+      "vis"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Carport",
+    "section": "",
+    "text": "Dependency Graph from Python imports (CARPORT).",
+    "crumbs": [
+      "Carport"
+    ]
+  },
+  {
+    "objectID": "index.html#installation",
+    "href": "index.html#installation",
+    "title": "Carport",
+    "section": "Installation",
+    "text": "Installation\npip install carport",
+    "crumbs": [
+      "Carport"
+    ]
+  },
+  {
+    "objectID": "index.html#usage",
+    "href": "index.html#usage",
+    "title": "Carport",
+    "section": "Usage",
+    "text": "Usage\n\n\nCode\nfrom carport.core import ImportGraph\n\ndepg = ImportGraph(root = '..', project='carport')\n# vars(depg)\n\n\n\n\nCode\n# specify irrelevant modules\nignore_nodes = ['io', 'IPython', 'pprint', 'subprocess']\n\n\n\n\nCode\n# export to dot string\ndot = depg.to_dot(ignore_nodes=ignore_nodes)\ndisplay(dot)\n\n\n'digraph  {\\n\"carport.vis\";\\n\"carport.core\";\\nnetworkx;\\npathlib;\\nast;\\nkroki;\\ngraphviz;\\n\"carport.vis\" -&gt; \"carport.core\"  [key=0];\\nnetworkx -&gt; \"carport.core\"  [key=0];\\npathlib -&gt; \"carport.core\"  [key=0];\\nast -&gt; \"carport.core\"  [key=0];\\nkroki -&gt; \"carport.vis\"  [key=0];\\ngraphviz -&gt; \"carport.vis\"  [key=0];\\n}\\n'\n\n\n\n\nCode\n# draw graph with graphviz\ndotg = depg.draw_dot(ignore_nodes=ignore_nodes)\ndisplay(dotg)\n\n\n\n\n\n\n\n\n\n\n\nCode\n# export to d2 string\nd2 = depg.to_d2(ignore_nodes=ignore_nodes)\ndisplay(d2)\n\n\n'\\n        vars: { \\n            d2-config: { \\n                layout-engine: elk \\n                } \\n            }\\n        direction: right\\n        **.style.border-radius: 99\\n        *.style.font: mono\\n        \\npathlib -&gt; carport.core\\ngraphviz -&gt; carport.vis\\nsubprocess -&gt; carport.vis\\nast -&gt; carport.core\\ncarport.vis -&gt; carport.core\\nkroki -&gt; carport.vis\\nnetworkx -&gt; carport.core\\nio -&gt; carport.core\\nIPython -&gt; carport.vis\\nio: null\\nIPython: null\\npprint: null\\nsubprocess: null'\n\n\n\n\nCode\n# draw graph with d2 or kroki\nd2g = depg.draw_d2(ignore_nodes=ignore_nodes, app='d2')\ndisplay(d2g)\n\n\n\n\n\n\n\n\n\n\n\nCode\n# for large graphs, you can use gravis\n#! pip install gravis\n\nimport networkx as nx \nimport gravis as gv\n\ng = depg.to_nx(ignore_nodes=ignore_nodes)\nlayout = nx.circular_layout(g, scale=4*len(g)**1.05)\nfor node_id, (x, y) in layout.items():\n    node = g.nodes[node_id]\n    node['x'], node['y'] = x, y\ngv.d3(g, edge_curvature=1, node_hover_neighborhood = True, use_edge_size_normalization=True)\n\n\nTODOs:\n[] imports concerning __init__.py\n[] py_d2 to d2 (like graphviz to graphviz)",
+    "crumbs": [
+      "Carport"
+    ]
+  },
+  {
+    "objectID": "index.html#related",
+    "href": "index.html#related",
+    "title": "Carport",
+    "section": "Related",
+    "text": "Related\nimport-deps: Github\npydeps: Github\nsnakefood3: Github\nkroki: online editor, python-interface\nD2: doc, online editor, python-interface",
+    "crumbs": [
+      "Carport"
+    ]
+  },
+  {
+    "objectID": "index.html#statistics",
+    "href": "index.html#statistics",
+    "title": "Carport",
+    "section": "Statistics",
+    "text": "Statistics",
+    "crumbs": [
+      "Carport"
+    ]
+  },
+  {
+    "objectID": "index.html#copyright",
+    "href": "index.html#copyright",
+    "title": "Carport",
+    "section": "Copyright",
+    "text": "Copyright\nCopyright © 2024 onward Felidz. All rights reserved, with certain parts of the project specifically licensed and subject to different terms and conditions, e.g., source code of the project under the Apache-2.0 license; you may not use this project except in compliance with the license.",
+    "crumbs": [
+      "Carport"
+    ]
+  },
+  {
+    "objectID": "index.html#citation",
+    "href": "index.html#citation",
+    "title": "Carport",
+    "section": "Citation",
+    "text": "Citation\nBibTeX citation:\n@misc{felidz2024,\n  author = {Felidz},\n  title = {Carport},\n  year = {2024},\n  publisher = {GitHub},\n  journal = {GitHub repository},\n  howpublished = {\\url{https://github.com/felidz/carport}}\n}",
+    "crumbs": [
+      "Carport"
+    ]
+  },
+  {
+    "objectID": "api/01-core.html",
+    "href": "api/01-core.html",
+    "title": "core",
+    "section": "",
+    "text": "Core codes for carport.\n\nsource\n\npath2module\n\n path2module (path:str, root:str='.')\n\n\nsource\n\n\nmodule2path\n\n module2path (mod_name:str, root:str='.')\n\n\nsource\n\n\nimps_from_file\n\n imps_from_file (path:pathlib.Path, root:str='.')\n\n\nsource\n\n\nget_imps\n\n get_imps (root:str='.', project:str='', agg_external:bool=True,\n           agg_internal:bool=True)\n\n\n\n\n\n\n\n\n\n\n\nType\nDefault\nDetails\n\n\n\n\nroot\nstr\n.\ndirectory where to look for import structure\n\n\nproject\nstr\n\nname of concerned project module\n\n\nagg_external\nbool\nTrue\nwhether to aggregate external imports by subsuming descendant modules\n\n\nagg_internal\nbool\nTrue\nwhether to aggregate internal imports by subsuming non-modular leaves\n\n\n\n\nsource\n\n\nImportGraph\n\n ImportGraph (root:str='.', project:str='', **kwargs)\n\nInitialize self. See help(type(self)) for accurate signature.\n\nsource\n\n\nImportGraph.to_nx\n\n ImportGraph.to_nx (ignore_nodes=[], **kw)\n\n\nsource\n\n\nImportGraph.to_dot\n\n ImportGraph.to_dot (path=None, **kw)\n\nSee networkx drawing module.\n\nsource\n\n\nImportGraph.to_d2\n\n ImportGraph.to_d2 (ignore_nodes=[], **kw)\n\nAlternatives: py_d2 may be a better way to do this.\n\nsource\n\n\nImportGraph.draw_dot\n\n ImportGraph.draw_dot (**kw)\n\n\nsource\n\n\nImportGraph.draw_d2\n\n ImportGraph.draw_d2 (app='kroki', **kw)",
+    "crumbs": [
+      "API",
+      "core"
+    ]
+  }
+]
