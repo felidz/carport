@@ -7,6 +7,7 @@ format:
     code-tools: 
       source: true
       # caption: none
+    # echo: fenced
     code-fold: show
     code-summary: "Code"
     code-line-numbers: true
